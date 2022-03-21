@@ -6,9 +6,11 @@ int main(int argc, char **argv){
         exit(1);
     }
     unsigned short port = atoi(argv[1]);
-    
-    int server_fd = startup_server(port);  
-    int client_fd = startup_client(server_fd);
+    struct sockaddr_in server_addr;
+    int server_fd = startup_server(port, &server_addr);  
+    struct sockaddr_in client_addr;
+    int client_fd = startup_client(server_fd, &client_addr);
+
 
     char buf[BUFSIZE];
     size_t read_ret;

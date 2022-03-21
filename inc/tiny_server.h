@@ -14,6 +14,9 @@
 
 #define BUFSIZE 1024
 
-int startup_server(unsigned short port);
-int startup_client();
+
+
+int startup_server(unsigned short port, struct sockaddr_in *p_server_addr);
+int startup_client(int server_fd, struct sockaddr_in *p_client_addr);
 void sys_err(const char *str);
+void show_client_info(struct sockaddr_in *p_client_addr);
