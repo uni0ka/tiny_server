@@ -2,6 +2,5 @@
 
 void sig_wait_child()
 {
-    int sig = -1;
-    do sig = waitpid(0, NULL, WNOHANG); while (sig > 0);
+    while( waitpid(0, NULL, WNOHANG) ); 
 }

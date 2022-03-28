@@ -1,7 +1,7 @@
 src = $(wildcard ./src/*.c)
 obj = $(patsubst ./src/%.c, ./obj/%.o, $(src))     #注意： , 前不要打空格
 inc_path = ./inc
-my_args = -Wall -g
+my_args = -Wall -g -lpthread
 
 ALL:main
 

@@ -1,5 +1,6 @@
 {
     "files.associations": {
-        "tiny_server.h": "c"
+        "tiny_server.h": "c",
+        "pthread.h": "c"
     }
 }
