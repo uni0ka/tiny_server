@@ -17,21 +17,28 @@ int main(int argc, char **argv){
         client_fd = startup_client(server_fd, &client_addr);
 
         fpid = fork();
-        if(fpid == -1) sys_err("fork error");
+        if(fpid == -1) sys_err("fork failed");
         else if(fpid == 0){       //child process
             close(server_fd);
             break;
         }
         else{                    //parent process
+            struct sigaction newact;
+            newact.sa_handler = sig_wait_child;
+            sigemptyset(&newact.sa_mask);
+            newact.sa_flags = 0;
+            sigaction(SIGCHLD, &newact, NULL);
+
             close(client_fd);
             continue;
         }
     }
 
     if(fpid == 0){
+        char buf[BUFSIZE];
         while(1){
-            char buf[BUFSIZE];
             size_t read_ret = read(client_fd, buf, sizeof(buf));
+            if(read_ret == 0)exit(1);
             write(STDOUT_FILENO, buf, read_ret);
 
             for(size_t i = 0; i < read_ret; ++i){
@@ -44,4 +51,3 @@ int main(int argc, char **argv){
 
     return 0;
 }
-

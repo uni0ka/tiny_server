@@ -9,7 +9,7 @@ int startup_server(unsigned short port, struct sockaddr_in *p_server_addr){
     server_addr.sin_addr.s_addr = htonl(INADDR_ANY);
     
     server_fd = socket(AF_INET, SOCK_STREAM, 0);
-    if (server_fd < 0) sys_err("socket failed.");
+    if (server_fd < 0) sys_err("socket failed");
 
     bind(server_fd, 
         (struct sockaddr *)&server_addr, 
@@ -28,7 +28,7 @@ int startup_client(int server_fd, struct sockaddr_in *p_client_addr){
     client_fd = accept(server_fd, 
                         (struct sockaddr *)p_client_addr, 
                         &client_addr_len);
-    if(client_fd < 0) sys_err("accept failed.");
+    if(client_fd < 0) sys_err("accept failed");
 
     show_client_info(p_client_addr);
 
