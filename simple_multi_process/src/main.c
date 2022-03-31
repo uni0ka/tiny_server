@@ -11,7 +11,6 @@ int main(int argc, char **argv){
     struct sockaddr_in client_addr;
     int client_fd = -1;
 
-
     int fpid;
     while(1){
         client_fd = startup_client(server_fd, &client_addr);
