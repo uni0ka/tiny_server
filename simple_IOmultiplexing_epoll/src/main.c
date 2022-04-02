@@ -51,7 +51,6 @@ int main(int argc, char **argv){
                 business_unit(tmp_client_fd, &read_stat);
                 if(read_stat == 0){
                     epoll_ctl(epoll_fd, EPOLL_CTL_DEL, tmp_client_fd, NULL);
-                    close(tmp_client_fd);
                     printf("client closed, fd:%d\n", tmp_client_fd);
                 }
             }

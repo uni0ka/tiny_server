@@ -10,6 +10,9 @@ void business_unit(int client_fd, int *stat){
         *stat = 0;
         return;
     }
+    else if(read_ret == -1){
+    	perror("read");
+    }
     else{
         write(STDOUT_FILENO, buf, read_ret);
         for (int i = 0; i < read_ret; i++){

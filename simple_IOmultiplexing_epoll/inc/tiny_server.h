@@ -9,7 +9,7 @@
 #include <sys/epoll.h>
 
 #define BUFSIZE 1024
-#define EPOLL_MAX_SIZE 4096
+#define EPOLL_MAX_SIZE 10000
 
 void sys_err(const char *str);
 void business_unit(int client_fd, int *stat);
