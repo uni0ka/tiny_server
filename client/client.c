@@ -27,7 +27,7 @@ void* call_back(void* arg){
 
     sleep(3);
     char* str = "test\n";
-    write(sock_fd, str, 5);
+    write(sock_fd, str, sizeof("test\n"));
     char* buf[5];
     int read_ret = read(sock_fd, buf, sizeof(buf));
     write(STDOUT_FILENO, buf, read_ret);

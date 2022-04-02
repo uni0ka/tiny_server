@@ -15,7 +15,7 @@ int main(int argc, char **argv){
     int server_fd = socket(AF_INET, SOCK_STREAM, 0);
     if(server_fd < 0) sys_err("socket failed");
     bind(server_fd, (struct sockaddr *)&server_addr, sizeof(server_addr));
-    listen(server_fd, 100);
+    listen(server_fd, 1000);
     printf("server created. server_fd = %d\n", server_fd);
 
     int epoll_fd = epoll_create(EPOLL_MAX_SIZE);
